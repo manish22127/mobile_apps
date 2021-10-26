@@ -18,14 +18,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         btn=findViewById(R.id.bid1);
         txt=findViewById(R.id.t1);
-        String str=txt.getText().toString();
+
+        String str;
+        str=txt.getText().toString();
 
 
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this,MainActivity2.class);
+                Intent i=new Intent(MainActivity.this,MainActivity2.class);
                 i.putExtra("message",str);
                 startActivity(i);
             }
