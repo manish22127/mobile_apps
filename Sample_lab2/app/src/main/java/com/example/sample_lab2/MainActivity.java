@@ -8,6 +8,7 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.Switch;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     ImageButton imgbtn;
@@ -28,17 +29,18 @@ public class MainActivity extends AppCompatActivity {
         imgbtn.setEnabled(false);
 
 
-
         swtch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if(isChecked)
                 {
+                    cl.removeView(dt);
                     imgbtn.setEnabled(true);
                 }
                 else
                 {
+                    cl.addView(dt);
                     imgbtn.setEnabled(false);
                 }
             }
