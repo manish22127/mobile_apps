@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 FragmentManager fm=getSupportFragmentManager();
                 FragmentTransaction ft=fm.beginTransaction();
 
+
                 if(current==1){
                     ft.replace(R.id.frameLayout,s1);
                     current=2;
