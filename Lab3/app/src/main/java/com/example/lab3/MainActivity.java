@@ -10,20 +10,20 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    First f1;
-    Second s1;
-    Button b1;
+//    First f1;
+//    Second s1;
+//    Button b1;
     int current=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        b1=findViewById(R.id.button);
+        Button b1=findViewById(R.id.button);
 
 
 
-        f1=new First();
-        s1=new Second();
+        First f1=new First();
+        Second s1=new Second();
 
 
         FragmentManager fm=getSupportFragmentManager();
