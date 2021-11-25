@@ -9,7 +9,7 @@ import android.widget.Toast;
 public class Dashboard extends AppCompatActivity {
 
     SeekBar s1;
-
+    int p;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +19,8 @@ public class Dashboard extends AppCompatActivity {
         s1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                int p=progress;
+                 p=s1.getProgress();
+
             }
 
             @Override
