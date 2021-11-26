@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Back4app</string>
+
+<!--    <string name="abc">afkjgae</string>-->
+
+        <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+        <string name="back4app_app_id">e06a181vwFx2whmL6h3kUYgNaL2mAziYrrBE5EYU</string>
+        <string name="back4app_client_key">eeZI0Zu2P4GNBl6B2vB2M6vwOHJ8qvYlzQ4FnNGN</string>
+
+
+</resources>
