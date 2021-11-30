@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId(getString(R.string.back4app_app_id))
                 .clientKey(getString(R.string.back4app_client_key))
@@ -44,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                ParseUser.logInInBackground(uname.getText().toString(), pwd.getText().toString(), (parseUser, e) -> {
-                    if (parseUser != null) {
+                ParseUser.logInInBackground(uname.getText().toString(), pwd.getText().toString(), (pareUser, e) -> {
+                    if (pareUser != null) {
                         Toast.makeText(getApplicationContext(),"Welcome "+uname.getText().toString(),Toast.LENGTH_LONG).show();
                         Intent i = new Intent(MainActivity.this,Second.class);
                         startActivity(i);
