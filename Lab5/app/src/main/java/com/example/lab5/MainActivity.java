@@ -10,7 +10,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.parse.Parse;
+import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,6 +58,25 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
+
+
+//                ParseUser user = new ParseUser();
+//                // Set the user's username and password, which can be obtained by a forms
+//                user.setUsername(uname.getText().toString());
+//                user.setPassword(pwd.getText().toString());
+//                user.signUpInBackground(new SignUpCallback() {
+//                    @Override
+//                    public void done(ParseException e) {
+//                        if (e == null) {
+//                            //showAlert("Successful Sign Up!", "Welcome" + "<Your username here>" +"!");
+//                            Toast.makeText(getApplicationContext(), "success", Toast.LENGTH_LONG).show();
+//
+//                        } else {
+//                            ParseUser.logOut();
+//                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+//                        }
+//                    }
+//                });
 
             }
         });
