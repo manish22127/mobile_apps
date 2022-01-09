@@ -14,11 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link action_fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class action_fragment extends Fragment {
     Button add,delete;
     EditText name;
@@ -26,12 +22,7 @@ public class action_fragment extends Fragment {
     public interface FragmentListener
     {
         void action_input(String name,String operation);
-
-
-
     }
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -43,15 +34,7 @@ public class action_fragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment action_fragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static action_fragment newInstance(String param1, String param2) {
         action_fragment fragment = new action_fragment();
         Bundle args = new Bundle();

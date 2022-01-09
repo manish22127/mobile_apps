@@ -99,16 +99,17 @@ public class List_fragment extends Fragment  {
     {
         this.name=name;
         this.opertions=operations;
+
         if(opertions.equals("delete")) {
             SparseBooleanArray sparseBooleanArray=listView.getCheckedItemPositions();
-            for (int i = 0; i <listView.getCount()+1; i++) {
+            for (int i = 0; i <=listView.getCount()+1; i++) {
 
                 if(sparseBooleanArray.get(i)==true)
 
 
                 {
 
-                    names.remove(i-1);
+                    names.remove(i);
 
                 }
 
