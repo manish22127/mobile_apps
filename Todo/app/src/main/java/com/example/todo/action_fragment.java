@@ -61,6 +61,8 @@ public class action_fragment extends Fragment {
         add=v.findViewById(R.id.add);
         delete=v.findViewById(R.id.delete);
         name=v.findViewById(R.id.name);
+
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,6 +70,7 @@ public class action_fragment extends Fragment {
                 fragmentListener.action_input(nameinput,"add");
             }
         });
+
 
         delete.setOnClickListener(new View.OnClickListener() {
             @Override

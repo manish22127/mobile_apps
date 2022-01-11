@@ -9,7 +9,9 @@ import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button b=findViewById(R.id.button);
-        String temp="ab@.cd@.ef";
+        String temp="";
         String[] t1=temp.split("@.");
         int i=0;
         for (String temp1:t1){
@@ -42,6 +44,12 @@ public class MainActivity extends AppCompatActivity {
                 notificationChannel.enableVibration(true);
                 notificationManager.createNotificationChannel(notificationChannel);
             }
+
+
+
+
+
+
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(MainActivity.this, NOTIFICATION_CHANNEL_ID);
             notificationBuilder.setAutoCancel(true)
                     .setDefaults(Notification.DEFAULT_ALL)
@@ -80,6 +88,12 @@ public class MainActivity extends AppCompatActivity {
                 notificationChannel.enableVibration(true);
                 notificationManager.createNotificationChannel(notificationChannel);
             }
+            Intent intentAction = new Intent(MainActivity.this,MyBroadcastReceiver.class);
+
+            intentAction.putExtra("action","action1");
+
+            PendingIntent pIntentlogin = PendingIntent.getBroadcast(MainActivity.this,1,intentAction,PendingIntent.FLAG_UPDATE_CURRENT);
+
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(MainActivity.this, NOTIFICATION_CHANNEL_ID);
             notificationBuilder.setAutoCancel(true)
                     .setDefaults(Notification.DEFAULT_ALL)
@@ -89,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     //.setPriority(Notification.PRIORITY_MAX)
                     .setContentTitle("sample notification")
                     .setContentText("This is sample notification")
+                    .addAction(R.drawable.ic_launcher_background, "Turn OFF driving mode", pIntentlogin)
                     .setContentInfo("Information");
             notificationManager.notify(1, notificationBuilder.build());
         }

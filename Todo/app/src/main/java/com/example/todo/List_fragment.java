@@ -102,14 +102,17 @@ public class List_fragment extends Fragment  {
 
         if(opertions.equals("delete")) {
             SparseBooleanArray sparseBooleanArray=listView.getCheckedItemPositions();
-            for (int i = 0; i <=listView.getCount()+1; i++) {
+            for (int i = 0; i <=listView.getCount(); i++) {
 
                 if(sparseBooleanArray.get(i)==true)
 
 
                 {
-
-                    names.remove(i);
+try{
+                    names.remove(i);}
+catch (Exception e){
+    Toast.makeText(getActivity(), "please try again"+e.getMessage(), Toast.LENGTH_SHORT).show();
+}
 
                 }
 
