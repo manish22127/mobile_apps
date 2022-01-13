@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,10 +62,52 @@ public class MainActivity extends AppCompatActivity {
         //set adapter
 
         recyclerView.setAdapter(mainAdapter);
+        FloatingActionButton b1=findViewById(R.id.floatingActionButton);
+        FloatingActionButton b2=findViewById(R.id.floatingActionButton1);
+        FloatingActionButton b3=findViewById(R.id.floatingActionButton2);
+
+
+
+        int[] i = {0};
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (i[0] == 1) {
+                    b2.setVisibility(View.GONE);
+                    b3.setVisibility(View.GONE);
+                    i[0] =0;
+                } else {
+                    b2.setVisibility(View.VISIBLE);
+                    b3.setVisibility(View.VISIBLE);
+                    i[0] =1;
+                }
+            }
+        });
+
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Thank You", Toast.LENGTH_SHORT).show();
+                editText.setVisibility(View.GONE);
+                btAdd.setVisibility(View.GONE);
+                btReset.setVisibility(View.GONE);
+            }
+        });
+
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editText.setVisibility(View.VISIBLE);
+                btAdd.setVisibility(View.VISIBLE);
+                btReset.setVisibility(View.VISIBLE);
+            }
+        });
+
 
         btAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //get string from edit text
 
                 String sText=editText.getText().toString().trim();
@@ -102,39 +147,141 @@ public class MainActivity extends AppCompatActivity {
                     alert.setTitle("InvalidActionAlert");
                     alert.show();
                 }
+                editText.setVisibility(View.GONE);
+                btAdd.setVisibility(View.GONE);
+                btReset.setVisibility(View.GONE);
             }
         });
         btReset.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               builder= new AlertDialog.Builder(v.getContext());
-               //Setting message manually and performing action on button click
-               builder.setMessage("Are you sure you want to delete all your todos?")
-                       .setCancelable(false)
-                       .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                           public void onClick(DialogInterface dialog, int id) {
+            @Override
+            public void onClick(View v) {
+                builder= new AlertDialog.Builder(v.getContext());
+                //Setting message manually and performing action on button click
+                builder.setMessage("Are you sure you want to delete all your todos?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
 
-                               //delete all data from database
-                               database.mainDao().reset(dataList);
-                               //notify when all data deteled
-                               dataList.clear();
-                               dataList.addAll(database.mainDao().getAll());
-                               mainAdapter.notifyDataSetChanged();
-                           }
-                       })
-                       .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                           public void onClick(DialogInterface dialog, int id) {
-                               //  Action for 'NO' Button
-                               dialog.cancel();
-                           }
-                       });
-               //Creating dialog box
-               AlertDialog alert = builder.create();
-               //Setting the title manually
-               alert.setTitle("ResetConfirmation");
-               alert.show();
+                                //delete all data from database
+                                database.mainDao().reset(dataList);
+                                //notify when all data deteled
+                                dataList.clear();
+                                dataList.addAll(database.mainDao().getAll());
+                                mainAdapter.notifyDataSetChanged();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                //  Action for 'NO' Button
+                                dialog.cancel();
+                            }
+                        });
+                //Creating dialog box
+                AlertDialog alert = builder.create();
+                //Setting the title manually
+                alert.setTitle("ResetConfirmation");
+                alert.show();
+                editText.setVisibility(View.GONE);
+                btAdd.setVisibility(View.GONE);
+                btReset.setVisibility(View.GONE);
+            }
 
-           }
-        });
+        }
+        );
+
+
+
+
+
+
+
+
+//        EditText editText=v.findViewById(R.id.edit_text);
+//        Button btAdd=v.findViewById(R.id.bt_add);
+//        Button btReset=v.findViewById(R.id.bt_reset);
+//        List<MainData> dataList=new ArrayList<>();
+//
+//
+//        RoomDB database=RoomDB.getInstance(getContext());
+//        dataList=database.mainDao().getAll();
+//
+//
+//        LinearLayoutManager linearLayoutManager =new LinearLayoutManager(getContext());
+//        RecyclerView recyclerView;
+//        recyclerView=v.findViewById(R.id.recycler_view);
+//
+//        recyclerView.setLayoutManager(linearLayoutManager);
+//        MainAdapter mainAdapter=new MainAdapter(dataList, (Activity) getContext());
+//        recyclerView.setAdapter(mainAdapter);
+//
+//
+//        btAdd.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String sText=editText.getText().toString().trim();
+//                if(!sText.equals("")){
+//                    MainData data=new MainData();
+//                    data.setText(sText);
+//
+//                    database.mainDao().insert(data);
+//                    editText.setText("");
+//
+//                    dataList.clear();
+//                    Toast.makeText(getContext(),"Successfully added!",Toast.LENGTH_LONG).show();
+//
+//                    dataList.addAll(database.mainDao().getAll());
+//                    mainAdapter.notifyDataSetChanged();
+//
+//                }else{
+//                    AlertDialog.Builder builder;
+//
+//                    builder= new AlertDialog.Builder(getContext());
+//                    builder.setMessage("The text field must not be empty!!")
+//                            .setCancelable(false)
+//                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int id) {
+//                                    dialog.cancel();
+//                                }
+//                            });
+//                    AlertDialog alert = builder.create();
+//                    alert.setTitle("InvalidActionAlert");
+//                    alert.show();
+//                }
+//            }
+//        });
+//
+//
+//
+//
+//        btReset.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                AlertDialog.Builder builder;
+//
+//                builder= new AlertDialog.Builder(v.getContext());
+//                builder.setMessage("Are you sure you want to delete all your todos?")
+//                        .setCancelable(false)
+//                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int id) {
+//                                database.mainDao().reset(dataList);
+//                                dataList.clear();
+//                                dataList.addAll(database.mainDao().getAll());
+//                                mainAdapter.notifyDataSetChanged();
+//                            }
+//                        })
+//                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int id) {
+//                                dialog.cancel();
+//                            }
+//                        });
+//                AlertDialog alert = builder.create();
+//                alert.setTitle("ResetConfirmation");
+//                alert.show();
+//
+//            }
+//        });
+
     }
 }
+
+

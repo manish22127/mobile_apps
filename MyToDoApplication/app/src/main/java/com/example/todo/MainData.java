@@ -1,6 +1,5 @@
 package com.example.todo;
 
-//define table name
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -10,18 +9,13 @@ import java.io.Serializable;
 
 @Entity(tableName = "table_name")
 public class MainData implements Serializable {
-    //create id column
     @PrimaryKey(autoGenerate = true)
 
     private int ID;
 
-    //create text column
-
     @ColumnInfo(name = "text")
 
     private String text;
-
-    //generate getter abd setter
 
 
     public int getID() {
